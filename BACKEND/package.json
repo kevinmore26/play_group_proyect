@@ -1,0 +1,31 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "db:init": "psql -U postgres -d playgroup_bd -f ./init/init.sql",
+    "db:drop": "psql -U postgres -c \"DROP DATABASE IF EXISTS playgroup_bd\"",
+    "db:create": "psql -U postgres -c \"CREATE DATABASE playgroup_bd\"",
+    "db:reset": "npm run db:drop && npm run db:create && npm run db:init",
+    "docker:up": "docker-compose up -d && npm run dev",
+
+    "docker:down": "docker-compose down -v"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
